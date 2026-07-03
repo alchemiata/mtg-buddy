@@ -1,0 +1,24 @@
+import type { GlossaryTerm } from "../types";
+
+export const GLOSSARY_TERMS: GlossaryTerm[] = [
+  { term: "Commander Damage", category: "Commander", summary: "Twenty-one combat damage from one commander can eliminate a player.", detail: "Track each commander's combat damage separately. If a player has taken 21 or more combat damage from the same commander over the game, that player loses." },
+  { term: "Commander Tax", category: "Commander", summary: "Your commander costs two more each time you recast it from the command zone.", detail: "Every time you cast your commander from the command zone after the first, it costs an additional two generic mana for each previous command-zone cast." },
+  { term: "Deathtouch", category: "Combat", summary: "Any amount of damage from this source is lethal to creatures.", detail: "A creature dealt damage by a source with deathtouch is destroyed the next time state-based actions are checked." },
+  { term: "Double Strike", category: "Combat", summary: "Deals combat damage twice.", detail: "A creature with double strike deals damage in both the first-strike combat damage step and the normal combat damage step." },
+  { term: "Equip", category: "Equipment", summary: "Attach Equipment to one of your creatures.", detail: "Equip is usually activated only as a sorcery. Pay the equip cost and attach the Equipment to a creature you control." },
+  { term: "Exile", category: "Zone", summary: "A zone outside the battlefield and graveyard.", detail: "Exiled cards are set apart from the game. Some effects can still interact with them, but most cannot." },
+  { term: "First Strike", category: "Combat", summary: "Deals combat damage before creatures without first strike.", detail: "Creatures without first strike that die in the first-strike damage step do not deal regular combat damage." },
+  { term: "Flying", category: "Combat", summary: "Can be blocked only by creatures with flying or reach.", detail: "Flying is an evasion ability. Ground creatures cannot block it unless they have reach or another effect says they can." },
+  { term: "Hexproof", category: "Protection", summary: "Opponents cannot target it.", detail: "A permanent or player with hexproof cannot be the target of spells or abilities controlled by opponents." },
+  { term: "Indestructible", category: "Protection", summary: "Cannot be destroyed by damage or destroy effects.", detail: "Indestructible permanents survive lethal damage and effects that say destroy. They can still be exiled, sacrificed, or bounced." },
+  { term: "Lifelink", category: "Combat", summary: "Damage from this source also gains you that much life.", detail: "Lifelink applies at the same time damage is dealt, so your life total rises immediately as the damage happens." },
+  { term: "Menace", category: "Combat", summary: "Can be blocked only by two or more creatures.", detail: "A creature with menace cannot be blocked by just one creature. The defending player needs at least two blockers for it." },
+  { term: "Mill", category: "Library", summary: "Put cards from the top of a library into a graveyard.", detail: "If a player mills three cards, they move the top three cards of their library into their graveyard." },
+  { term: "Priority", category: "Rules", summary: "The permission to act before the game moves on.", detail: "Players get priority to cast spells and activate abilities. The game advances when all players pass priority in order." },
+  { term: "Proliferate", category: "Counters", summary: "Add another counter to things that already have counters.", detail: "Choose any number of permanents and players with counters, then give each one another counter of each kind already there." },
+  { term: "Scry", category: "Library", summary: "Look at top cards and keep or bottom them.", detail: "To scry, look at cards from the top of your library, then put any number on the bottom and the rest back on top." },
+  { term: "Stack", category: "Rules", summary: "The waiting area for spells and abilities.", detail: "Spells and most abilities go on the stack before resolving. The newest object on the stack resolves first." },
+  { term: "Surveil", category: "Library", summary: "Look at top cards and keep or graveyard them.", detail: "To surveil, look at cards from the top of your library, then put any number into your graveyard and the rest back on top." },
+  { term: "Trample", category: "Combat", summary: "Extra combat damage can hit the defending player.", detail: "After assigning lethal damage to blockers, a creature with trample may assign remaining damage to the defending player, planeswalker, or battle." },
+  { term: "Ward", category: "Protection", summary: "Opponents must pay an extra cost to target it.", detail: "When an opponent targets a permanent with ward, the ward ability triggers. If they do not pay the ward cost, their spell or ability is countered." }
+].sort((a, b) => a.term.localeCompare(b.term));
