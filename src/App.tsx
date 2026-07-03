@@ -3,6 +3,7 @@ import AppLayout from "./components/AppLayout";
 import GameScreen from "./components/GameScreen";
 import GlossaryScreen from "./components/GlossaryScreen";
 import SettingsScreen from "./components/SettingsScreen";
+import { getBackground } from "./data/backgrounds";
 import { clearSavedState, defaultState, loadState, saveState } from "./lib/storage";
 import type { AppState, AppTheme, BackgroundKey, Tab, TrackedCardState } from "./types";
 
@@ -14,6 +15,7 @@ function App() {
 
   useEffect(() => {
     document.documentElement.dataset.theme = state.settings.appTheme;
+    document.documentElement.style.setProperty("--land-bg", `url(${getBackground(state.settings.background).asset})`);
     saveState(state);
   }, [state]);
 
