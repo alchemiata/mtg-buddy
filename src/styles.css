@@ -30,22 +30,22 @@
 
 * { box-sizing: border-box; }
 html { min-height: 100%; background: var(--app-bg); -webkit-tap-highlight-color: transparent; }
-body { min-height: 100%; margin: 0; overflow: hidden; font-family: var(--font-body); }
+body { min-height: 100%; margin: 0; overflow: hidden; font-family: var(--font-body); background: radial-gradient(circle at 50% 20%, rgba(255,248,234,.08), transparent 34%), linear-gradient(180deg, rgba(12,8,5,.54), rgba(12,8,5,.86)), var(--land-bg), var(--app-bg); background-attachment: fixed; background-position: center; background-size: cover; }
 button, input { font: inherit; }
 h1, h2, .settings-title, .life-number, .fantasy-title { font-family: var(--font-display); letter-spacing: 0; }
 button:focus-visible, input:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--focus); }
 .tap-button { transform: translateZ(0); touch-action: manipulation; }
 .tap-button:active { transform: scale(.97); }
-.game-shell { display: flex; flex-direction: column; }
+.game-shell { display: flex; flex-direction: column; background: rgba(18,13,9,.18); backdrop-filter: blur(0px); }
 .tracker-panel { height: calc(100dvh - 36dvh - 5.75rem - env(safe-area-inset-bottom)); }
 .life-number { display: block; text-align: center; font-size: clamp(6rem, 31vw, 10.5rem); font-weight: 900; line-height: .9; color: white; text-shadow: 0 12px 42px rgba(0,0,0,.58), 0 0 28px rgba(244,220,151,.24); font-variant-numeric: tabular-nums; }
 .counter-button { min-height: 5.2rem; border-radius: 1.5rem; background: rgba(0,0,0,.34); color: white; font-size: 3rem; font-weight: 1000; line-height: 1; backdrop-filter: blur(18px); }
 .stat-button { min-height: 3.25rem; border-radius: 1rem; background: var(--card-bg); font-size: 1.8rem; font-weight: 1000; line-height: 1; }
 .modifier-readout { min-height: 3.25rem; display: grid; place-items: center; font-size: 1.35rem; }
-.screen-shell { display: flex; min-height: 0; flex: 1; flex-direction: column; }
+.screen-shell { display: flex; min-height: 0; flex: 1; flex-direction: column; background: rgba(18,13,9,.26); backdrop-filter: blur(10px); }
 .settings-section { border: 1px solid var(--border); border-radius: 1.5rem; background: var(--surface); padding: 1rem; box-shadow: 0 14px 36px rgba(25,19,11,.12); }
 .settings-title { margin-bottom: .75rem; font-size: 1rem; font-weight: 1000; }
 .animate-in { animation: card-in 180ms ease-out; }
 @keyframes card-in { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @media (orientation: landscape) and (max-height: 560px) { .game-shell { display: grid; grid-template-columns: minmax(20rem,.9fr) 1.1fr; gap: 1rem; padding: 1rem; } .life-panel { min-height: auto; border-radius: 2rem; } .tracker-panel { height: calc(100dvh - 7.5rem); padding: 0; } }
-@media (min-width: 768px) { body { overflow: auto; } .tracker-panel { height: calc(100dvh - 2.5rem); } .life-number { font-size: clamp(7rem, 15vw, 13rem); } .screen-shell { max-width: 48rem; width: 100%; align-self: center; border-radius: 2rem; background: var(--app-bg); } }
+@media (min-width: 768px) { body { overflow: auto; } .tracker-panel { height: calc(100dvh - 2.5rem); } .life-number { font-size: clamp(7rem, 15vw, 13rem); } .screen-shell { max-width: 48rem; width: 100%; align-self: center; border-radius: 2rem; background: rgba(18,13,9,.54); } }
