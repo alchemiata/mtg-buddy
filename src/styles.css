@@ -41,6 +41,7 @@ button:focus-visible, input:focus-visible { outline: none; box-shadow: 0 0 0 4px
 .life-number { display: block; text-align: center; font-size: clamp(6rem, 31vw, 10.5rem); font-weight: 900; line-height: .9; color: white; text-shadow: 0 12px 42px rgba(0,0,0,.58), 0 0 28px rgba(244,220,151,.24); font-variant-numeric: tabular-nums; }
 .counter-button { min-height: 5.2rem; border-radius: 1.5rem; background: rgba(0,0,0,.34); color: white; font-size: 3rem; font-weight: 1000; line-height: 1; backdrop-filter: blur(18px); }
 .stat-button { min-height: 3.25rem; border-radius: 1rem; background: var(--card-bg); font-size: 1.8rem; font-weight: 1000; line-height: 1; }
+.modifier-readout { min-height: 3.25rem; display: grid; place-items: center; font-size: 1.35rem; }
 .screen-shell { display: flex; min-height: 0; flex: 1; flex-direction: column; }
 .settings-section { border: 1px solid var(--border); border-radius: 1.5rem; background: var(--surface); padding: 1rem; box-shadow: 0 14px 36px rgba(25,19,11,.12); }
 .settings-title { margin-bottom: .75rem; font-size: 1rem; font-weight: 1000; }
