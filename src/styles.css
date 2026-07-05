@@ -92,6 +92,10 @@ body {
   background-size: cover;
 }
 
+#root {
+  min-height: 100dvh;
+}
+
 button,
 input {
   font: inherit;
@@ -336,26 +340,33 @@ input:focus-visible {
   inset: 0;
   z-index: 35;
   display: flex;
-  background: rgba(4, 3, 2, 0.56);
-  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(4, 3, 2, 0.42);
+  backdrop-filter: blur(7px);
 }
 
 .overlay-panel {
   position: relative;
   display: flex;
-  width: 100%;
-  height: 100dvh;
+  width: min(100%, 398px);
+  height: min(88dvh, 760px);
   min-height: 0;
   flex-direction: column;
-  padding: calc(1rem + env(safe-area-inset-top)) 0 0;
-  background: rgba(18, 13, 9, 0.68);
-  backdrop-filter: blur(16px);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 1.65rem;
+  padding: 0.75rem 0 0;
+  background: rgba(24, 19, 15, 0.76);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.54);
+  backdrop-filter: blur(22px);
 }
 
 .overlay-close {
   position: absolute;
-  right: 1rem;
-  top: calc(1rem + env(safe-area-inset-top));
+  right: 0.85rem;
+  top: 0.85rem;
   z-index: 20;
   display: grid;
   min-height: 2.75rem;
@@ -366,6 +377,15 @@ input:focus-visible {
   color: var(--text-primary);
   font-size: 1.3rem;
   font-weight: 1000;
+}
+
+.glossary-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-radius: 1.3rem 1.3rem 0 0;
+  background: rgba(24, 19, 15, 0.86);
+  backdrop-filter: blur(18px);
 }
 
 .menu-popover {
@@ -457,10 +477,9 @@ input:focus-visible {
 
 @media (orientation: landscape) and (max-height: 560px) {
   .game-shell {
-    display: grid;
-    grid-template-columns: minmax(20rem, 0.9fr) 1.1fr;
-    gap: 1rem;
-    padding: 1rem;
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem;
   }
 
   .life-panel {
@@ -476,11 +495,11 @@ input:focus-visible {
 
 @media (min-width: 768px) {
   body {
-    overflow: auto;
+    overflow: hidden;
   }
 
   .tracker-panel {
-    height: calc(100dvh - 2.5rem);
+    height: auto;
   }
 
   .life-number {
@@ -489,20 +508,17 @@ input:focus-visible {
 
   .screen-shell {
     height: 100%;
-    max-width: 48rem;
+    max-width: 100%;
     width: 100%;
     align-self: center;
-    border-radius: 2rem;
-    background: rgba(18, 13, 9, 0.54);
+    border-radius: 0;
+    background: transparent;
     padding-bottom: 1rem;
   }
 
   .overlay-panel {
-    margin: 1.25rem auto;
-    width: min(48rem, calc(100vw - 2.5rem));
-    height: calc(100dvh - 2.5rem);
-    border: 1px solid var(--border);
-    border-radius: 2rem;
-    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.45);
+    width: min(398px, calc(100vw - 2rem));
+    height: min(88dvh, 760px);
+    border-radius: 1.65rem;
   }
 }
