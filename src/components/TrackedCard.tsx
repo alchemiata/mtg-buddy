@@ -41,13 +41,13 @@ function TrackedCard({ card, onUpdate, onReset, onDelete }: TrackedCardProps) {
           id={`name-${card.id}`}
           value={card.name}
           onFocus={() => {
-            if (card.name === "New permanent") {
+            if (card.name === "New") {
               onUpdate(card.id, { name: "" });
             }
           }}
           onChange={(event) => onUpdate(card.id, { name: event.target.value })}
           className="permanent-name-input"
-          placeholder="Permanent name"
+          placeholder="Name"
         />
         <div className="base-pair" aria-label="Base power and toughness">
           <label>
