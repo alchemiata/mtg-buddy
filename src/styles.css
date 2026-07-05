@@ -397,7 +397,7 @@ input:focus-visible {
 .hamburger-icon::after {
   display: block;
   width: 1.45rem;
-  height: 0.16rem;
+  height: 3px;
   border-radius: 999px;
   background: currentColor;
 }

@@ -42,7 +42,7 @@ function BottomNavigation(props: BottomNavigationProps) {
       <button
         type="button"
         onClick={() => setIsOpen((current) => !current)}
-        className="tap-button grid h-14 w-14 place-items-center rounded-full bg-[var(--accent)] text-2xl font-black text-[var(--accent-text)] shadow-glow"
+        className="tap-button grid h-14 w-14 place-items-center rounded-full bg-[var(--land-accent)] text-2xl font-black text-[var(--land-accent-text)] shadow-glow"
         aria-expanded={isOpen}
         aria-label="Open app menu"
       >

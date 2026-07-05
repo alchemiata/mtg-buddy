@@ -48,18 +48,22 @@ function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChan
           <button
             type="button"
             onClick={() => setIsChoosingStart((current) => !current)}
-            className="tap-button min-h-12 rounded-full bg-black/32 px-4 text-sm font-black text-white transition hover:bg-black/45"
+            className="tap-button min-h-10 rounded-full bg-[var(--land-accent)] px-4 text-xs font-black text-[var(--land-accent-text)] shadow-soft"
             aria-expanded={isChoosingStart}
             aria-label="Change starting life"
           >
-            Start {settings.startingLife}
+            Set Life
           </button>
           <button
             type="button"
             onPointerDown={beginReset}
             onPointerUp={cancelReset}
             onPointerLeave={cancelReset}
-            className={`tap-button min-h-12 rounded-full px-4 text-sm font-black text-white transition ${confirmingReset ? "bg-red-500" : "bg-black/32 hover:bg-black/45"}`}
+            className={`tap-button min-h-10 rounded-full px-4 text-xs font-black shadow-soft ${
+              confirmingReset
+                ? "bg-red-500 text-white"
+                : "bg-[var(--land-accent)] text-[var(--land-accent-text)]"
+            }`}
             aria-label="Hold to reset life total"
           >
             {confirmingReset ? "Hold..." : "Reset"}

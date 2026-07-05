@@ -17,7 +17,7 @@ function CardTracker({ cards, onAddCard, onUpdateCard, onResetCard, onDeleteCard
           <h2 className="text-xl font-black tracking-normal">Permanent Ledger</h2>
           <p className="text-xs font-semibold text-[var(--text-muted)]">{cards.length ? `${cards.length} permanent${cards.length === 1 ? "" : "s"}` : "Track changing stats"}</p>
         </div>
-        <button type="button" onClick={onAddCard} className="tap-button min-h-10 rounded-full bg-[var(--accent)] px-4 text-xs font-black text-[var(--accent-text)] shadow-soft">
+        <button type="button" onClick={onAddCard} className="tap-button min-h-10 rounded-full bg-[var(--land-accent)] px-4 text-xs font-black text-[var(--land-accent-text)] shadow-soft">
           Add
         </button>
       </div>

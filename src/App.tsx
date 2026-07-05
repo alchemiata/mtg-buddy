@@ -15,8 +15,12 @@ function App() {
   const [state, setState] = useState<AppState>(() => loadState());
 
   useEffect(() => {
+    const background = getBackground(state.settings.background);
+
     document.documentElement.dataset.theme = state.settings.appTheme;
-    document.documentElement.style.setProperty("--land-bg", `url(${getBackground(state.settings.background).asset})`);
+    document.documentElement.style.setProperty("--land-bg", `url(${background.asset})`);
+    document.documentElement.style.setProperty("--land-accent", background.accent);
+    document.documentElement.style.setProperty("--land-accent-text", "#17120c");
     saveState(state);
   }, [state]);
 
