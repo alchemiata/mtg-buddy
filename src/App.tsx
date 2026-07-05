@@ -5,12 +5,13 @@ import GlossaryScreen from "./components/GlossaryScreen";
 import SettingsScreen from "./components/SettingsScreen";
 import { getBackground } from "./data/backgrounds";
 import { clearSavedState, defaultState, loadState, saveState } from "./lib/storage";
-import type { AppState, AppTheme, BackgroundKey, Tab, TrackedCardState } from "./types";
+import type { AppState, AppTheme, BackgroundKey, TrackedCardState } from "./types";
 
 const makeId = () => crypto.randomUUID?.() ?? `card-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+type Overlay = "glossary" | "settings" | "wallpapers" | null;
 
 function App() {
-  const [activeTab, setActiveTab] = useState<Tab>("game");
+  const [activeOverlay, setActiveOverlay] = useState<Overlay>(null);
   const [state, setState] = useState<AppState>(() => loadState());
 
   useEffect(() => {
@@ -50,7 +51,7 @@ function App() {
       resetAll: () => {
         clearSavedState();
         setState(defaultState);
-        setActiveTab("game");
+        setActiveOverlay(null);
       },
     }),
     []
@@ -58,36 +59,47 @@ function App() {
 
   return (
     <AppLayout
-      activeTab={activeTab}
-      onTabChange={setActiveTab}
       appTheme={state.settings.appTheme}
-      background={state.settings.background}
-      onBackgroundChange={actions.setBackground}
+      activeOverlay={activeOverlay}
+      onOpenOverlay={setActiveOverlay}
+      onCloseOverlay={() => setActiveOverlay(null)}
+      overlayContent={
+        <>
+          {activeOverlay === "glossary" && <GlossaryScreen />}
+          {activeOverlay === "settings" && (
+            <SettingsScreen
+              settings={state.settings}
+              onThemeChange={actions.setAppTheme}
+              onBackgroundChange={actions.setBackground}
+              onStartingLifeChange={actions.setStartingLife}
+              onResetAll={actions.resetAll}
+            />
+          )}
+          {activeOverlay === "wallpapers" && (
+            <SettingsScreen
+              settings={state.settings}
+              onThemeChange={actions.setAppTheme}
+              onBackgroundChange={actions.setBackground}
+              onStartingLifeChange={actions.setStartingLife}
+              onResetAll={actions.resetAll}
+              wallpapersOnly
+            />
+          )}
+        </>
+      }
     >
-      {activeTab === "game" && (
-        <GameScreen
-          life={state.life}
-          cards={state.cards}
-          settings={state.settings}
-          onChangeLife={actions.changeLife}
-          onResetLife={actions.resetLife}
-          onStartingLifeChange={actions.setStartingLife}
-          onAddCard={actions.addCard}
-          onUpdateCard={actions.updateCard}
-          onResetCard={actions.resetCard}
-          onDeleteCard={actions.deleteCard}
-        />
-      )}
-      {activeTab === "glossary" && <GlossaryScreen />}
-      {activeTab === "settings" && (
-        <SettingsScreen
-          settings={state.settings}
-          onThemeChange={actions.setAppTheme}
-          onBackgroundChange={actions.setBackground}
-          onStartingLifeChange={actions.setStartingLife}
-          onResetAll={actions.resetAll}
-        />
-      )}
+      <GameScreen
+        life={state.life}
+        cards={state.cards}
+        settings={state.settings}
+        onChangeLife={actions.changeLife}
+        onResetLife={actions.resetLife}
+        onStartingLifeChange={actions.setStartingLife}
+        onAddCard={actions.addCard}
+        onUpdateCard={actions.updateCard}
+        onResetCard={actions.resetCard}
+        onDeleteCard={actions.deleteCard}
+      />
     </AppLayout>
   );
 }
