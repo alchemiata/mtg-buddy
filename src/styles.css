@@ -72,13 +72,13 @@
 }
 
 html {
-  min-height: 100%;
+  height: 100%;
   background: var(--app-bg);
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  min-height: 100%;
+  height: 100%;
   margin: 0;
   overflow: hidden;
   font-family: var(--font-body);
@@ -93,7 +93,8 @@ body {
 }
 
 #root {
-  min-height: 100dvh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 button,
@@ -127,15 +128,18 @@ input:focus-visible {
 
 .game-shell {
   display: flex;
+  height: 100%;
+  min-height: 0;
   flex-direction: column;
   gap: 0.75rem;
+  overflow: hidden;
   padding: 0.75rem;
   background: linear-gradient(180deg, rgba(18, 13, 9, 0.02), rgba(18, 13, 9, 0.12));
   backdrop-filter: blur(0px);
 }
 
 .tracker-panel {
-  height: auto;
+  min-height: 0;
 }
 
 .life-panel {
@@ -549,7 +553,7 @@ input:focus-visible {
   }
 
   .tracker-panel {
-    height: auto;
+    min-height: 0;
   }
 
   .life-number {
