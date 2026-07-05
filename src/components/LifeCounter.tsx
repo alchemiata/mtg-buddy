@@ -43,7 +43,7 @@ function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChan
 
   return (
     <section
-      className="life-panel relative flex min-h-[36dvh] flex-col overflow-hidden rounded-b-[2rem] bg-cover bg-center p-4 shadow-glow transition-all duration-500 md:min-h-[calc(100dvh-8rem)] md:rounded-[2rem]"
+      className="life-panel relative flex min-h-[35dvh] flex-col overflow-hidden rounded-[1.75rem] bg-cover bg-center p-4 shadow-glow transition-all duration-500 md:min-h-[calc(100dvh-8rem)] md:rounded-[2rem]"
       style={{ backgroundImage: `radial-gradient(circle at 50% 42%, rgba(12, 8, 5, .04), rgba(12, 8, 5, .5) 58%, rgba(12, 8, 5, .86)), linear-gradient(180deg, rgba(18, 13, 9, .08), rgba(18, 13, 9, .72)), url(${background.asset})` }}
       aria-label="Life counter"
     >
