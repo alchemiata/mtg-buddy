@@ -83,8 +83,8 @@ body {
   overflow: hidden;
   font-family: var(--font-body);
   background:
-    radial-gradient(circle at 50% 20%, rgba(255, 248, 234, 0.08), transparent 34%),
-    linear-gradient(180deg, rgba(12, 8, 5, 0.54), rgba(12, 8, 5, 0.86)),
+    radial-gradient(circle at 50% 12%, rgba(255, 248, 234, 0.22), transparent 34%),
+    linear-gradient(180deg, rgba(12, 8, 5, 0.28), rgba(12, 8, 5, 0.68)),
     var(--land-bg),
     var(--app-bg);
   background-attachment: fixed;
@@ -130,7 +130,7 @@ input:focus-visible {
   flex-direction: column;
   gap: 0.75rem;
   padding: 0.75rem;
-  background: linear-gradient(180deg, rgba(18, 13, 9, 0.06), rgba(18, 13, 9, 0.24));
+  background: linear-gradient(180deg, rgba(18, 13, 9, 0.02), rgba(18, 13, 9, 0.12));
   backdrop-filter: blur(0px);
 }
 
@@ -139,10 +139,16 @@ input:focus-visible {
 }
 
 .life-panel {
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 248, 234, 0.34);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.36), transparent 48%),
+    linear-gradient(180deg, rgba(255, 248, 234, 0.24), rgba(255, 248, 234, 0.1)),
+    rgba(255, 248, 234, 0.12);
+  backdrop-filter: blur(18px) saturate(1.18);
   box-shadow:
-    0 22px 58px rgba(0, 0, 0, 0.44),
-    0 2px 0 rgba(255, 255, 255, 0.08) inset;
+    0 24px 64px rgba(0, 0, 0, 0.36),
+    0 1px 0 rgba(255, 255, 255, 0.28) inset,
+    0 -1px 0 rgba(255, 255, 255, 0.08) inset;
 }
 
 .life-number {
@@ -156,10 +162,40 @@ input:focus-visible {
   font-variant-numeric: tabular-nums;
 }
 
+.top-action-button {
+  min-height: 3rem;
+  border: 1px solid rgba(255, 248, 234, 0.24);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 234, 0.16), rgba(255, 248, 234, 0.06)),
+    rgba(12, 8, 5, 0.38);
+  padding: 0 0.95rem;
+  color: white;
+  font-size: 0.88rem;
+  font-weight: 1000;
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.18),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset;
+  transition: background 160ms ease, border-color 160ms ease, transform 120ms ease;
+  backdrop-filter: blur(16px);
+}
+
+.top-action-button:hover {
+  border-color: rgba(255, 248, 234, 0.34);
+  background:
+    linear-gradient(180deg, rgba(255, 248, 234, 0.22), rgba(255, 248, 234, 0.08)),
+    rgba(12, 8, 5, 0.48);
+}
+
+.top-action-button.is-confirming {
+  border-color: rgba(255, 176, 166, 0.7);
+  background: rgba(239, 68, 68, 0.92);
+}
+
 .counter-button {
   min-height: 5.2rem;
   border-radius: 1.5rem;
-  background: rgba(0, 0, 0, 0.34);
+  background: rgba(20, 14, 10, 0.34);
   color: white;
   font-size: 3rem;
   font-weight: 1000;
@@ -184,7 +220,7 @@ input:focus-visible {
   background:
     linear-gradient(180deg, rgba(255, 248, 234, 0.04), transparent 44%),
     var(--card-bg);
-  padding: 0.55rem;
+  padding: 0.55rem 0.55rem 2.35rem;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
 }
 
@@ -215,6 +251,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: 1.55rem auto 1.55rem;
   align-items: center;
+  justify-items: center;
   min-height: 2.1rem;
   border-radius: 0.65rem;
   background: var(--surface-2);
@@ -222,6 +259,11 @@ input:focus-visible {
   color: var(--text-muted);
   font-size: 0.95rem;
   font-weight: 1000;
+}
+
+.base-pair label {
+  display: grid;
+  place-items: center;
 }
 
 .base-pair input {
@@ -261,6 +303,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.45rem;
+  margin-bottom: 0.25rem;
 }
 
 .modifier-cluster {
@@ -300,17 +343,24 @@ input:focus-visible {
 
 .permanent-actions {
   position: absolute;
-  right: 0.45rem;
-  bottom: 0.45rem;
+  right: 0.55rem;
+  bottom: 0.55rem;
   display: flex;
-  gap: 0.25rem;
+  gap: 0.4rem;
+  align-items: center;
+  border-radius: 999px;
+  background: rgba(10, 7, 5, 0.22);
+  padding: 0.2rem;
 }
 
 .permanent-action {
-  min-height: 1.45rem;
+  display: grid;
+  min-height: 1.65rem;
+  min-width: 1.65rem;
+  place-items: center;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
-  padding: 0 0.45rem;
+  padding: 0 0.55rem;
   color: var(--text-muted);
   font-size: 0.62rem;
   font-weight: 1000;
@@ -329,7 +379,7 @@ input:focus-visible {
   min-height: 0;
   flex: 1;
   flex-direction: column;
-  background: rgba(18, 13, 9, 0.26);
+  background: rgba(18, 13, 9, 0.18);
   backdrop-filter: blur(10px);
   overflow: hidden;
   padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
