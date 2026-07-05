@@ -1,25 +1,22 @@
 import { useState } from "react";
-import { BACKGROUNDS } from "../data/backgrounds";
-import type { BackgroundKey, Tab } from "../types";
-
-const tabs: Array<{ id: Tab; label: string; icon: string }> = [
-  { id: "game", label: "Game", icon: "20" },
-  { id: "glossary", label: "Glossary", icon: "AZ" },
-  { id: "settings", label: "Settings", icon: "*" },
-];
 
 interface BottomNavigationProps {
-  activeTab: Tab;
-  background: BackgroundKey;
-  onTabChange: (tab: Tab) => void;
-  onBackgroundChange: (background: BackgroundKey) => void;
+  onOpenGlossary: () => void;
+  onOpenSettings: () => void;
+  onOpenWallpapers: () => void;
 }
 
-function BottomNavigation({ activeTab, background, onTabChange, onBackgroundChange }: BottomNavigationProps) {
+const menuItems: Array<{ label: string; icon: string; onClick: keyof BottomNavigationProps }> = [
+  { label: "Glossary", icon: "AZ", onClick: "onOpenGlossary" },
+  { label: "Wallpapers", icon: "BG", onClick: "onOpenWallpapers" },
+  { label: "Settings", icon: "*", onClick: "onOpenSettings" },
+];
+
+function BottomNavigation(props: BottomNavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const chooseTab = (tab: Tab) => {
-    onTabChange(tab);
+  const chooseItem = (action: keyof BottomNavigationProps) => {
+    props[action]();
     setIsOpen(false);
   };
 
@@ -28,38 +25,15 @@ function BottomNavigation({ activeTab, background, onTabChange, onBackgroundChan
       {isOpen && (
         <nav aria-label="App menu" className="menu-popover w-[min(21rem,calc(100vw-1.5rem))] rounded-[1.35rem] border border-white/14 bg-[var(--nav-bg)] p-3 shadow-glow backdrop-blur-2xl">
           <div className="grid grid-cols-3 gap-2">
-            {tabs.map((tab) => {
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  type="button"
-                  onClick={() => chooseTab(tab.id)}
-                  className={`tap-button flex min-h-12 flex-col items-center justify-center rounded-2xl text-xs font-black transition ${
-                    isActive ? "bg-[var(--nav-active)] text-[var(--nav-active-text)]" : "bg-white/8 text-[var(--text-muted)]"
-                  }`}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  <span className="fantasy-title text-base leading-none" aria-hidden="true">{tab.icon}</span>
-                  <span>{tab.label}</span>
-                </button>
-              );
-            })}
-          </div>
-          <div className="mt-3 grid grid-cols-3 gap-2" aria-label="Land skin">
-            {BACKGROUNDS.map((option) => (
+            {menuItems.map((item) => (
               <button
-                key={option.key}
+                key={item.label}
                 type="button"
-                onClick={() => onBackgroundChange(option.key)}
-                className={`tap-button flex min-h-10 items-center gap-2 rounded-xl border px-2 text-left text-[0.72rem] font-black transition ${
-                  background === option.key
-                    ? "border-white bg-white text-stone-950"
-                    : "border-white/12 bg-white/8 text-[var(--text-primary)]"
-                }`}
+                onClick={() => chooseItem(item.onClick)}
+                className="tap-button flex min-h-12 flex-col items-center justify-center rounded-2xl bg-white/8 text-xs font-black text-[var(--text-primary)] transition hover:bg-white/12"
               >
-                <span className="h-5 w-5 shrink-0 rounded-full bg-cover bg-center" style={{ backgroundImage: `url(${option.asset})` }} aria-hidden="true" />
-                <span className="truncate">{option.label}</span>
+                <span className="fantasy-title text-base leading-none" aria-hidden="true">{item.icon}</span>
+                <span>{item.label}</span>
               </button>
             ))}
           </div>
@@ -72,7 +46,7 @@ function BottomNavigation({ activeTab, background, onTabChange, onBackgroundChan
         aria-expanded={isOpen}
         aria-label="Open app menu"
       >
-        {isOpen ? "x" : "?"}
+        <span aria-hidden="true" className="hamburger-icon" />
       </button>
     </div>
   );
