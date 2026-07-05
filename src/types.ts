@@ -7,11 +7,7 @@ export type BackgroundKey =
   | "island"
   | "swamp"
   | "mountain"
-  | "plains"
-  | "colorless"
-  | "arcane"
-  | "dark-marble"
-  | "wood-table";
+  | "plains";
 
 export interface TrackedCardState {
   id: string;
