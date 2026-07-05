@@ -21,6 +21,7 @@ function App() {
 
   const actions = useMemo(
     () => ({
+      setLife: (value: number) => setState((current) => ({ ...current, life: Math.max(0, value) })),
       changeLife: (delta: number) => setState((current) => ({ ...current, life: Math.max(0, current.life + delta) })),
       resetLife: () => setState((current) => ({ ...current, life: current.settings.startingLife })),
       setStartingLife: (startingLife: number) =>
@@ -32,13 +33,20 @@ function App() {
       addCard: () =>
         setState((current) => ({
           ...current,
-          cards: [{ id: makeId(), name: "New permanent", baseAttack: 0, baseDefense: 0, attack: 0, defense: 0 }, ...current.cards],
+          cards: [{ id: makeId(), name: "", baseAttack: 0, baseDefense: 0, attack: 0, defense: 0 }, ...current.cards],
         })),
       updateCard: (id: string, patch: Partial<Omit<TrackedCardState, "id">>) =>
-        setState((current) => ({ ...current, cards: current.cards.map((card) => (card.id === id ? { ...card, ...patch } : card)) })),
+        setState((current) => ({
+          ...current,
+          cards: current.cards.map((card) => (card.id === id ? { ...card, ...patch } : card)),
+        })),
       resetCard: (id: string) =>
-        setState((current) => ({ ...current, cards: current.cards.map((card) => (card.id === id ? { ...card, attack: 0, defense: 0 } : card)) })),
-      deleteCard: (id: string) => setState((current) => ({ ...current, cards: current.cards.filter((card) => card.id !== id) })),
+        setState((current) => ({
+          ...current,
+          cards: current.cards.map((card) => (card.id === id ? { ...card, attack: 0, defense: 0 } : card)),
+        })),
+      deleteCard: (id: string) =>
+        setState((current) => ({ ...current, cards: current.cards.filter((card) => card.id !== id) })),
       resetAll: () => {
         clearSavedState();
         setState(defaultState);
@@ -49,7 +57,13 @@ function App() {
   );
 
   return (
-    <AppLayout activeTab={activeTab} onTabChange={setActiveTab} appTheme={state.settings.appTheme}>
+    <AppLayout
+      activeTab={activeTab}
+      onTabChange={setActiveTab}
+      appTheme={state.settings.appTheme}
+      background={state.settings.background}
+      onBackgroundChange={actions.setBackground}
+    >
       {activeTab === "game" && (
         <GameScreen
           life={state.life}
@@ -58,7 +72,6 @@ function App() {
           onChangeLife={actions.changeLife}
           onResetLife={actions.resetLife}
           onStartingLifeChange={actions.setStartingLife}
-          onBackgroundChange={actions.setBackground}
           onAddCard={actions.addCard}
           onUpdateCard={actions.updateCard}
           onResetCard={actions.resetCard}
