@@ -17,7 +17,7 @@ interface GameScreenProps {
 
 function GameScreen(props: GameScreenProps) {
   return (
-    <section className="game-shell min-h-0 flex-1 md:grid md:grid-cols-[minmax(22rem,0.85fr)_1.15fr] md:gap-5">
+    <section className="game-shell min-h-0 flex-1">
       <LifeCounter
         life={props.life}
         settings={props.settings}
