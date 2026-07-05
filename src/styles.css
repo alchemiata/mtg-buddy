@@ -172,7 +172,7 @@ input:focus-visible {
 
 .screen-shell {
   display: flex;
-  height: 100dvh;
+  height: 100%;
   min-height: 0;
   flex: 1;
   flex-direction: column;
@@ -182,8 +182,88 @@ input:focus-visible {
   padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
 }
 
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  display: flex;
+  background: rgba(4, 3, 2, 0.56);
+  backdrop-filter: blur(4px);
+}
+
+.overlay-panel {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100dvh;
+  min-height: 0;
+  flex-direction: column;
+  padding: calc(1rem + env(safe-area-inset-top)) 0 0;
+  background: rgba(18, 13, 9, 0.68);
+  backdrop-filter: blur(16px);
+}
+
+.overlay-close {
+  position: absolute;
+  right: 1rem;
+  top: calc(1rem + env(safe-area-inset-top));
+  z-index: 20;
+  display: grid;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  font-weight: 1000;
+}
+
 .menu-popover {
   animation: menu-in 160ms ease-out;
+}
+
+.hamburger-icon,
+.hamburger-icon::before,
+.hamburger-icon::after {
+  display: block;
+  width: 1.45rem;
+  height: 0.16rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.hamburger-icon {
+  position: relative;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.hamburger-icon::before {
+  top: -0.48rem;
+}
+
+.hamburger-icon::after {
+  top: 0.48rem;
+}
+
+.start-life-popover {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.6rem);
+  z-index: 30;
+  width: min(15rem, calc(100vw - 2rem));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1.1rem;
+  background: rgba(16, 12, 9, 0.9);
+  padding: 0.65rem;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(20px);
 }
 
 .settings-section {
@@ -259,12 +339,21 @@ input:focus-visible {
   }
 
   .screen-shell {
-    height: calc(100dvh - 2.5rem);
+    height: 100%;
     max-width: 48rem;
     width: 100%;
     align-self: center;
     border-radius: 2rem;
     background: rgba(18, 13, 9, 0.54);
     padding-bottom: 1rem;
+  }
+
+  .overlay-panel {
+    margin: 1.25rem auto;
+    width: min(48rem, calc(100vw - 2.5rem));
+    height: calc(100dvh - 2.5rem);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.45);
   }
 }
