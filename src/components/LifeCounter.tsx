@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { getBackground } from "../data/backgrounds";
 import type { SettingsState } from "../types";
 
 const startingLifeOptions = [20, 40];
@@ -16,7 +15,6 @@ function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChan
   const [confirmingReset, setConfirmingReset] = useState(false);
   const [isChoosingStart, setIsChoosingStart] = useState(false);
   const timer = useRef<number | null>(null);
-  const background = getBackground(settings.background);
 
   const beginReset = () => {
     setConfirmingReset(true);
@@ -35,14 +33,13 @@ function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChan
 
   return (
     <section
-      className="life-panel relative flex min-h-[35dvh] flex-col overflow-hidden rounded-[1.75rem] bg-cover bg-center p-4 shadow-glow transition-all duration-500"
-      style={{ backgroundImage: `radial-gradient(circle at 50% 42%, rgba(12, 8, 5, .04), rgba(12, 8, 5, .5) 58%, rgba(12, 8, 5, .86)), linear-gradient(180deg, rgba(18, 13, 9, .08), rgba(18, 13, 9, .72)), url(${background.asset})` }}
+      className="life-panel relative flex min-h-[35dvh] flex-col overflow-hidden rounded-[1.75rem] p-4 shadow-glow transition-all duration-500"
       aria-label="Life counter"
     >
       <div className="relative z-10 flex items-center justify-between gap-3">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.18em] text-white/70">Command Zone</p>
-          <h1 className="fantasy-title text-xl font-black text-white">MTG Companion</h1>
+          <h1 className="fantasy-title text-xl font-black text-white">MTG Buddy</h1>
         </div>
         <div className="relative flex items-center gap-2">
           <button
