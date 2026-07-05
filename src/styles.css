@@ -148,11 +148,22 @@ input:focus-visible {
     radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.36), transparent 48%),
     linear-gradient(180deg, rgba(255, 248, 234, 0.24), rgba(255, 248, 234, 0.1)),
     rgba(255, 248, 234, 0.12);
-  backdrop-filter: blur(18px) saturate(1.18);
   box-shadow:
     0 24px 64px rgba(0, 0, 0, 0.36),
     0 1px 0 rgba(255, 255, 255, 0.28) inset,
     0 -1px 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+.life-panel::before {
+  content: "";
+  position: absolute;
+  inset: 5.25rem calc(4.5rem + 0.7rem) 0.85rem;
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(10, 7, 5, 0.28), rgba(10, 7, 5, 0.1) 58%, transparent 76%),
+    rgba(255, 248, 234, 0.06);
+  backdrop-filter: blur(13px) saturate(1.08);
+  pointer-events: none;
 }
 
 .life-number {
@@ -198,13 +209,16 @@ input:focus-visible {
 
 .counter-button {
   min-height: 5.2rem;
+  border: 1px solid rgba(255, 248, 234, 0.18);
   border-radius: 1.5rem;
-  background: rgba(20, 14, 10, 0.34);
+  background: rgba(20, 14, 10, 0.24);
   color: white;
   font-size: 3rem;
   font-weight: 1000;
   line-height: 1;
-  backdrop-filter: blur(18px);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.14) inset;
 }
 
 .stat-button {
@@ -352,9 +366,10 @@ input:focus-visible {
   display: flex;
   gap: 0.4rem;
   align-items: center;
+  flex-shrink: 0;
   border-radius: 999px;
   background: rgba(10, 7, 5, 0.22);
-  padding: 0.2rem;
+  padding: 0.25rem;
 }
 
 .permanent-action {
@@ -362,12 +377,21 @@ input:focus-visible {
   min-height: 1.65rem;
   min-width: 1.65rem;
   place-items: center;
+  flex: 0 0 auto;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   padding: 0 0.55rem;
   color: var(--text-muted);
   font-size: 0.62rem;
   font-weight: 1000;
+  white-space: nowrap;
+}
+
+.permanent-action.danger {
+  width: 1.9rem;
+  min-width: 1.9rem;
+  padding: 0;
+  color: var(--danger);
 }
 
 .modifier-readout {
