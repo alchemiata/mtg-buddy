@@ -124,12 +124,21 @@ input:focus-visible {
 .game-shell {
   display: flex;
   flex-direction: column;
-  background: rgba(18, 13, 9, 0.18);
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: linear-gradient(180deg, rgba(18, 13, 9, 0.06), rgba(18, 13, 9, 0.24));
   backdrop-filter: blur(0px);
 }
 
 .tracker-panel {
-  height: calc(100dvh - 36dvh - 1rem - env(safe-area-inset-bottom));
+  height: auto;
+}
+
+.life-panel {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 22px 58px rgba(0, 0, 0, 0.44),
+    0 2px 0 rgba(255, 255, 255, 0.08) inset;
 }
 
 .life-number {
@@ -161,6 +170,146 @@ input:focus-visible {
   font-size: 1.3rem;
   font-weight: 1000;
   line-height: 1;
+}
+
+.permanent-card {
+  position: relative;
+  min-height: 9.4rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 234, 0.04), transparent 44%),
+    var(--card-bg);
+  padding: 0.55rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+.permanent-card-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.permanent-name-input {
+  min-height: 2.1rem;
+  min-width: 0;
+  width: 100%;
+  border-radius: 0.65rem;
+  background: var(--surface-2);
+  padding: 0 0.55rem;
+  font-size: 0.95rem;
+  font-weight: 1000;
+  outline: none;
+}
+
+.permanent-name-input::placeholder {
+  color: var(--text-muted);
+}
+
+.base-pair {
+  display: grid;
+  grid-template-columns: 1.55rem auto 1.55rem;
+  align-items: center;
+  min-height: 2.1rem;
+  border-radius: 0.65rem;
+  background: var(--surface-2);
+  padding: 0 0.35rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 1000;
+}
+
+.base-pair input {
+  width: 1.55rem;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 1000;
+  outline: none;
+}
+
+.current-statline {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.25rem 0.25rem 0.15rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(2.45rem, 13vw, 3.35rem);
+  font-weight: 1000;
+  line-height: 0.98;
+  font-variant-numeric: tabular-nums;
+}
+
+.current-statline span:first-child {
+  text-align: right;
+}
+
+.current-statline span:last-child {
+  text-align: left;
+}
+
+.modifier-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+}
+
+.modifier-cluster {
+  display: grid;
+  grid-template-columns: 1fr 1.65rem;
+  gap: 0.3rem;
+  align-items: stretch;
+}
+
+.modifier-chip {
+  display: grid;
+  min-height: 2.35rem;
+  place-items: center;
+  border-radius: 0.7rem;
+  background: var(--surface-2);
+  color: var(--accent-strong);
+  font-size: 1rem;
+  font-weight: 1000;
+  font-variant-numeric: tabular-nums;
+}
+
+.modifier-buttons {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.mini-stat-button {
+  display: grid;
+  min-height: 1.05rem;
+  place-items: center;
+  border-radius: 0.45rem;
+  background: var(--surface-2);
+  font-size: 0.8rem;
+  font-weight: 1000;
+  line-height: 1;
+}
+
+.permanent-actions {
+  position: absolute;
+  right: 0.45rem;
+  bottom: 0.45rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.permanent-action {
+  min-height: 1.45rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  font-weight: 1000;
 }
 
 .modifier-readout {
@@ -321,7 +470,7 @@ input:focus-visible {
 
   .tracker-panel {
     height: calc(100dvh - 7.5rem);
-    padding: 0;
+    padding: 0.25rem;
   }
 }
 
