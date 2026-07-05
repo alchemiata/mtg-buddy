@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { getBackground } from "../data/backgrounds";
 import type { SettingsState } from "../types";
 
-const startingLifeOptions = [20, 30, 40];
+const startingLifeOptions = [20, 40];
 
 interface LifeCounterProps {
   life: number;
@@ -13,7 +13,6 @@ interface LifeCounterProps {
 }
 
 function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChange }: LifeCounterProps) {
-  const [customLife, setCustomLife] = useState(settings.startingLife.toString());
   const [confirmingReset, setConfirmingReset] = useState(false);
   const [isChoosingStart, setIsChoosingStart] = useState(false);
   const timer = useRef<number | null>(null);
@@ -34,16 +33,9 @@ function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChan
     setConfirmingReset(false);
   };
 
-  const applyCustomLife = () => {
-    const parsed = Number(customLife);
-    if (Number.isFinite(parsed) && parsed > 0) {
-      onStartingLifeChange(Math.min(999, Math.round(parsed)));
-    }
-  };
-
   return (
     <section
-      className="life-panel relative flex min-h-[35dvh] flex-col overflow-hidden rounded-[1.75rem] bg-cover bg-center p-4 shadow-glow transition-all duration-500 md:min-h-[calc(100dvh-8rem)] md:rounded-[2rem]"
+      className="life-panel relative flex min-h-[35dvh] flex-col overflow-hidden rounded-[1.75rem] bg-cover bg-center p-4 shadow-glow transition-all duration-500"
       style={{ backgroundImage: `radial-gradient(circle at 50% 42%, rgba(12, 8, 5, .04), rgba(12, 8, 5, .5) 58%, rgba(12, 8, 5, .86)), linear-gradient(180deg, rgba(18, 13, 9, .08), rgba(18, 13, 9, .72)), url(${background.asset})` }}
       aria-label="Life counter"
     >
@@ -74,13 +66,12 @@ function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChan
           </button>
           {isChoosingStart && (
             <div className="start-life-popover">
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 {startingLifeOptions.map((option) => (
                   <button
                     key={option}
                     type="button"
                     onClick={() => {
-                      setCustomLife(option.toString());
                       onStartingLifeChange(option);
                       setIsChoosingStart(false);
                     }}
@@ -91,27 +82,6 @@ function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChan
                     {option}
                   </button>
                 ))}
-              </div>
-              <div className="mt-2 flex min-h-10 items-center rounded-xl bg-white/14 pl-3 pr-1 text-white">
-                <label htmlFor="custom-life" className="sr-only">Custom starting life</label>
-                <input
-                  id="custom-life"
-                  value={customLife}
-                  onChange={(event) => setCustomLife(event.target.value)}
-                  inputMode="numeric"
-                  className="w-16 bg-transparent text-sm font-black outline-none placeholder:text-white/50"
-                  placeholder="Custom"
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    applyCustomLife();
-                    setIsChoosingStart(false);
-                  }}
-                  className="tap-button min-h-8 rounded-lg bg-white px-3 text-xs font-black text-stone-950"
-                >
-                  Set
-                </button>
               </div>
             </div>
           )}
