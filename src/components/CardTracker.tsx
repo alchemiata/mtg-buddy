@@ -11,7 +11,7 @@ interface CardTrackerProps {
 
 function CardTracker({ cards, onAddCard, onUpdateCard, onResetCard, onDeleteCard }: CardTrackerProps) {
   return (
-    <section className="tracker-panel flex min-h-0 flex-1 flex-col px-3 pt-3 md:rounded-[2rem] md:bg-[var(--surface)] md:p-4 md:shadow-soft">
+    <section className="tracker-panel flex min-h-0 flex-1 flex-col px-1 pt-1 md:rounded-[2rem] md:bg-[var(--surface)] md:p-4 md:shadow-soft">
       <div className="mb-2 flex items-center justify-between gap-2">
         <div>
           <h2 className="text-xl font-black tracking-normal">Permanent Ledger</h2>
