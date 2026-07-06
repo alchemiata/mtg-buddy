@@ -7,7 +7,7 @@ export interface BackgroundTheme {
   accent: string;
 }
 
-const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+const publicAsset = (path: string) => new URL(`${import.meta.env.BASE_URL}${path}`, window.location.href).href;
 
 export const BACKGROUNDS: BackgroundTheme[] = [
   { key: "forest", label: "Forest", asset: publicAsset("backgrounds/forest-custom.png"), accent: "#8ed064" },
