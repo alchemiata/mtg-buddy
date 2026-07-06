@@ -33,7 +33,7 @@ function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChan
 
   return (
     <section
-      className="life-panel relative flex min-h-[27dvh] flex-col overflow-hidden rounded-[1.75rem] p-3 shadow-glow transition-all duration-500 md:min-h-[35dvh] md:p-4"
+      className="life-panel relative flex flex-col overflow-hidden rounded-[1.75rem] p-2.5 shadow-glow transition-all duration-500 md:p-4"
       aria-label="Life counter"
     >
       <div className="relative z-10 flex items-center justify-between gap-3">

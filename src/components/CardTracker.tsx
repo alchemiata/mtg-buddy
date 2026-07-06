@@ -22,7 +22,7 @@ function CardTracker({ cards, onAddCard, onUpdateCard, onResetCard, onDeleteCard
         </button>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-y-auto pb-20 pr-1">
+      <div className="tracker-scroll min-h-0 flex-1 overflow-y-auto pb-20 pr-1">
         {cards.length === 0 ? (
           <div className="flex min-h-56 flex-col items-center justify-center p-6 text-center">
             <p className="text-lg font-black">No cards yet</p>
