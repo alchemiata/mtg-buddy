@@ -12,7 +12,7 @@ interface CardTrackerProps {
 function CardTracker({ cards, onAddCard, onUpdateCard, onResetCard, onDeleteCard }: CardTrackerProps) {
   return (
     <section className="tracker-panel flex min-h-0 flex-1 flex-col px-1 pt-1">
-      <div className="mb-2 flex items-center justify-between gap-2">
+      <div className="tracker-header mb-2 flex items-center justify-between gap-2">
         <div>
           <h2 className="text-xl font-black tracking-normal">Creature Ledger</h2>
           <p className="text-xs font-semibold text-[var(--text-muted)]">{cards.length ? `${cards.length} creature${cards.length === 1 ? "" : "s"}` : "Track changing stats"}</p>

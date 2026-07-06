@@ -149,11 +149,38 @@ input:focus-visible {
   min-height: 0;
 }
 
+.tracker-header {
+  position: relative;
+  z-index: 8;
+  margin-inline: -0.25rem;
+  padding: 0.35rem 0.25rem 0.5rem;
+  background:
+    linear-gradient(180deg, rgba(12, 8, 5, 0.88), rgba(12, 8, 5, 0.82)),
+    var(--land-bg),
+    var(--app-bg);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.tracker-header::after {
+  content: "";
+  position: absolute;
+  left: -0.75rem;
+  right: -0.75rem;
+  bottom: -0.45rem;
+  height: 0.95rem;
+  background: linear-gradient(180deg, rgba(8, 6, 4, 0.5), rgba(8, 6, 4, 0));
+  filter: blur(5px);
+  pointer-events: none;
+}
+
 .tracker-scroll {
   position: relative;
-  padding-top: 0.45rem;
-  mask-image: linear-gradient(to bottom, transparent 0, black 1rem, black 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 1rem, black 100%);
+  margin-top: -0.2rem;
+  padding-top: 0.65rem;
+  mask-image: linear-gradient(to bottom, transparent 0, black 0.75rem, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 0.75rem, black 100%);
 }
 
 .tracker-panel::after {
@@ -161,11 +188,11 @@ input:focus-visible {
   position: absolute;
   left: -0.75rem;
   right: -0.75rem;
-  top: 3.4rem;
+  top: 3.25rem;
   z-index: 5;
-  height: 2.2rem;
-  background: linear-gradient(180deg, rgba(15, 11, 8, 0.38), rgba(15, 11, 8, 0));
-  backdrop-filter: blur(5px);
+  height: 1.35rem;
+  background: linear-gradient(180deg, rgba(10, 7, 5, 0.6), rgba(10, 7, 5, 0));
+  filter: blur(5px);
   pointer-events: none;
 }
 
@@ -192,6 +219,9 @@ input:focus-visible {
     radial-gradient(circle at 50% 50%, rgba(10, 7, 5, 0.28), rgba(10, 7, 5, 0.1) 58%, transparent 76%),
     rgba(255, 248, 234, 0.06);
   backdrop-filter: blur(13px) saturate(1.08);
+  filter: blur(1px);
+  mask-image: radial-gradient(ellipse at center, black 0 52%, rgba(0, 0, 0, 0.82) 62%, transparent 82%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0 52%, rgba(0, 0, 0, 0.82) 62%, transparent 82%);
   pointer-events: none;
 }
 
