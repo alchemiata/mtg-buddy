@@ -8,6 +8,8 @@
   --surface: #251e18;
   --surface-2: #342a21;
   --card-bg: #2a221b;
+  --card-bg-glass: rgba(42, 34, 27, 0.68);
+  --field-bg-glass: rgba(52, 42, 33, 0.68);
   --nav-bg: rgba(25, 19, 15, 0.86);
   --nav-active: #f0cf87;
   --nav-active-text: #1b130c;
@@ -31,6 +33,8 @@
   --surface: #1b2024;
   --surface-2: #252b31;
   --card-bg: #1f252a;
+  --card-bg-glass: rgba(31, 37, 42, 0.68);
+  --field-bg-glass: rgba(37, 43, 49, 0.68);
   --nav-bg: rgba(14, 17, 20, 0.9);
   --nav-active: #b7d7ff;
   --nav-active-text: #0d141c;
@@ -52,6 +56,8 @@
   --surface: #fffaf0;
   --surface-2: #ece2d2;
   --card-bg: #fffdf7;
+  --card-bg-glass: rgba(255, 253, 247, 0.72);
+  --field-bg-glass: rgba(236, 226, 210, 0.72);
   --nav-bg: rgba(255, 250, 240, 0.9);
   --nav-active: #252018;
   --nav-active-text: #fff8ea;
@@ -131,7 +137,7 @@ input:focus-visible {
   height: 100%;
   min-height: 0;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.65rem;
   overflow: hidden;
   padding: 0.75rem;
   background: linear-gradient(180deg, rgba(18, 13, 9, 0.02), rgba(18, 13, 9, 0.12));
@@ -157,7 +163,7 @@ input:focus-visible {
 .life-panel::before {
   content: "";
   position: absolute;
-  inset: 5.25rem calc(4.5rem + 0.7rem) 0.85rem;
+  inset: 4.45rem calc(3.75rem + 0.7rem) 0.65rem;
   border-radius: 1.5rem;
   background:
     radial-gradient(circle at 50% 50%, rgba(10, 7, 5, 0.28), rgba(10, 7, 5, 0.1) 58%, transparent 76%),
@@ -169,7 +175,7 @@ input:focus-visible {
 .life-number {
   display: block;
   text-align: center;
-  font-size: clamp(6rem, 31vw, 10.5rem);
+  font-size: clamp(5.2rem, 27vw, 10.5rem);
   font-weight: 900;
   line-height: 0.9;
   color: white;
@@ -208,7 +214,7 @@ input:focus-visible {
 }
 
 .counter-button {
-  min-height: 5.2rem;
+  min-height: 4.35rem;
   border: 1px solid rgba(255, 248, 234, 0.18);
   border-radius: 1.5rem;
   background: rgba(20, 14, 10, 0.24);
@@ -237,9 +243,10 @@ input:focus-visible {
   border-radius: 1rem;
   background:
     linear-gradient(180deg, rgba(255, 248, 234, 0.04), transparent 44%),
-    var(--card-bg);
+    var(--card-bg-glass);
   padding: 0.55rem;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(9px) saturate(1.08);
 }
 
 .permanent-card-top {
@@ -254,7 +261,7 @@ input:focus-visible {
   min-width: 0;
   width: 100%;
   border-radius: 0.65rem;
-  background: var(--surface-2);
+  background: var(--field-bg-glass);
   padding: 0 0.55rem;
   font-size: 0.95rem;
   font-weight: 1000;
@@ -272,7 +279,7 @@ input:focus-visible {
   justify-items: center;
   min-height: 2.1rem;
   border-radius: 0.65rem;
-  background: var(--surface-2);
+  background: var(--field-bg-glass);
   padding: 0 0.35rem;
   color: var(--text-muted);
   font-size: 0.95rem;
@@ -358,7 +365,7 @@ input:focus-visible {
   min-height: 2.35rem;
   place-items: center;
   border-radius: 0.7rem;
-  background: var(--surface-2);
+  background: var(--field-bg-glass);
   color: var(--accent-strong);
   font-size: 1rem;
   font-weight: 1000;
@@ -375,7 +382,7 @@ input:focus-visible {
   min-height: 1.05rem;
   place-items: center;
   border-radius: 0.45rem;
-  background: var(--surface-2);
+  background: var(--field-bg-glass);
   font-size: 0.8rem;
   font-weight: 1000;
   line-height: 1;
@@ -394,7 +401,7 @@ input:focus-visible {
   min-height: 0;
   flex: 1;
   flex-direction: column;
-  background: rgba(18, 13, 9, 0.18);
+  background: rgba(18, 13, 9, 0.1);
   backdrop-filter: blur(10px);
   overflow: hidden;
   padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
@@ -567,8 +574,16 @@ input:focus-visible {
     min-height: 0;
   }
 
+  .life-panel::before {
+    inset: 5.25rem calc(4.5rem + 0.7rem) 0.85rem;
+  }
+
   .life-number {
     font-size: clamp(7rem, 15vw, 13rem);
+  }
+
+  .counter-button {
+    min-height: 5.2rem;
   }
 
   .screen-shell {

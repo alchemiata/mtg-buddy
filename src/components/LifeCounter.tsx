@@ -33,7 +33,7 @@ function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChan
 
   return (
     <section
-      className="life-panel relative flex min-h-[35dvh] flex-col overflow-hidden rounded-[1.75rem] p-4 shadow-glow transition-all duration-500"
+      className="life-panel relative flex min-h-[27dvh] flex-col overflow-hidden rounded-[1.75rem] p-3 shadow-glow transition-all duration-500 md:min-h-[35dvh] md:p-4"
       aria-label="Life counter"
     >
       <div className="relative z-10 flex items-center justify-between gap-3">
@@ -89,7 +89,7 @@ function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChan
         </div>
       </div>
 
-      <div className="relative z-10 grid flex-1 grid-cols-[4.5rem_1fr_4.5rem] items-center gap-2 py-1">
+      <div className="relative z-10 grid flex-1 grid-cols-[3.75rem_1fr_3.75rem] items-center gap-2 py-0 md:grid-cols-[4.5rem_1fr_4.5rem] md:py-1">
         <button type="button" onClick={() => onChangeLife(-1)} className="tap-button counter-button" aria-label="Lose one life">-</button>
         <output className="life-number" aria-live="polite">{life}</output>
         <button type="button" onClick={() => onChangeLife(1)} className="tap-button counter-button" aria-label="Gain one life">+</button>
