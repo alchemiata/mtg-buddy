@@ -21,7 +21,7 @@ function AppLayout({
   children,
 }: AppLayoutProps) {
   return (
-    <div className="h-dvh overflow-hidden bg-[var(--app-bg)] text-[var(--text-primary)] transition-colors duration-300" data-app-theme={appTheme}>
+    <div className="h-dvh overflow-hidden text-[var(--text-primary)] transition-colors duration-300" data-app-theme={appTheme}>
       <main className="mx-auto flex h-dvh min-h-0 w-full max-w-[430px] flex-col pb-[calc(1rem+env(safe-area-inset-bottom))]">
         <div className="flex min-h-0 flex-1 flex-col">{children}</div>
       </main>
