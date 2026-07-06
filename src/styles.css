@@ -238,6 +238,10 @@ input:focus-visible {
   pointer-events: none;
 }
 
+.life-panel-header {
+  z-index: 30;
+}
+
 .life-number {
   display: block;
   min-width: 0;
@@ -253,6 +257,7 @@ input:focus-visible {
 }
 
 .life-control-row {
+  z-index: 10;
   grid-template-columns: minmax(3.75rem, 0.7fr) minmax(6.1rem, 1.25fr) minmax(3.75rem, 0.7fr);
 }
 
@@ -573,7 +578,7 @@ input:focus-visible {
   position: absolute;
   right: 0;
   top: calc(100% + 0.6rem);
-  z-index: 30;
+  z-index: 40;
   width: min(15rem, calc(100vw - 2rem));
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 1.1rem;

@@ -36,7 +36,7 @@ function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChan
       className="life-panel relative flex flex-col overflow-hidden rounded-[1.75rem] p-2.5 shadow-glow transition-all duration-500 md:p-4"
       aria-label="Life counter"
     >
-      <div className="relative z-10 flex items-center justify-between gap-3">
+      <div className="life-panel-header relative flex items-center justify-between gap-3">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.18em] text-white/70">Command Zone</p>
           <h1 className="fantasy-title text-xl font-black text-white">MTG Buddy</h1>
