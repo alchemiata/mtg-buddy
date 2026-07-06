@@ -240,13 +240,20 @@ input:focus-visible {
 
 .life-number {
   display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
   text-align: center;
-  font-size: clamp(4.35rem, 24vw, 7rem);
+  font-size: clamp(3.85rem, 21vw, 6.35rem);
   font-weight: 900;
   line-height: 0.9;
   color: white;
   text-shadow: 0 12px 42px rgba(0, 0, 0, 0.58), 0 0 28px rgba(244, 220, 151, 0.24);
   font-variant-numeric: tabular-nums;
+}
+
+.life-control-row {
+  grid-template-columns: minmax(3.75rem, 0.7fr) minmax(6.1rem, 1.25fr) minmax(3.75rem, 0.7fr);
 }
 
 .top-action-button {
@@ -280,6 +287,9 @@ input:focus-visible {
 }
 
 .counter-button {
+  position: relative;
+  z-index: 2;
+  width: 100%;
   min-height: 3.7rem;
   border: 1px solid rgba(255, 248, 234, 0.18);
   border-radius: 1.5rem;
@@ -652,6 +662,10 @@ input:focus-visible {
 
   .life-number {
     font-size: clamp(7rem, 15vw, 13rem);
+  }
+
+  .life-control-row {
+    grid-template-columns: minmax(4.5rem, 0.7fr) minmax(10rem, 1.3fr) minmax(4.5rem, 0.7fr);
   }
 
   .counter-button {

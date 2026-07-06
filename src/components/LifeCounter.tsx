@@ -89,7 +89,7 @@ function LifeCounter({ life, settings, onChangeLife, onReset, onStartingLifeChan
         </div>
       </div>
 
-      <div className="relative z-10 grid flex-1 grid-cols-[3.75rem_1fr_3.75rem] items-center gap-2 py-0 md:grid-cols-[4.5rem_1fr_4.5rem] md:py-1">
+      <div className="life-control-row relative z-10 grid flex-1 items-center gap-2 py-0 md:py-1">
         <button type="button" onClick={() => onChangeLife(-1)} className="tap-button counter-button" aria-label="Lose one life">-</button>
         <output className="life-number" aria-live="polite">{life}</output>
         <button type="button" onClick={() => onChangeLife(1)} className="tap-button counter-button" aria-label="Gain one life">+</button>
