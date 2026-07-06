@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <title>Refreshing MTG Buddy</title>
+  </head>
+  <body>
+    <script>
+      Promise.all([
+        "serviceWorker" in navigator
+          ? navigator.serviceWorker.getRegistrations().then((registrations) =>
+              Promise.all(registrations.map((registration) => registration.unregister()))
+            )
+          : Promise.resolve(),
+        "caches" in window ? caches.keys().then((keys) => Promise.all(keys.map((key) => caches.delete(key)))) : Promise.resolve(),
+      ]).finally(() => {
+        window.location.replace("./?fresh=" + Date.now());
+      });
+    </script>
+  </body>
+</html>
