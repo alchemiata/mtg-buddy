@@ -89,12 +89,12 @@ body {
   overflow: hidden;
   font-family: var(--font-body);
   background:
-    radial-gradient(circle at 50% 12%, rgba(255, 248, 234, 0.22), transparent 34%),
-    linear-gradient(180deg, rgba(12, 8, 5, 0.28), rgba(12, 8, 5, 0.68)),
+    radial-gradient(circle at 50% 10%, rgba(255, 248, 234, 0.28), transparent 32%),
+    linear-gradient(180deg, rgba(12, 8, 5, 0.14), rgba(12, 8, 5, 0.44)),
     var(--land-bg),
     var(--app-bg);
   background-attachment: fixed;
-  background-position: center;
+  background-position: center top;
   background-size: cover;
 }
 
