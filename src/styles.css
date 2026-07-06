@@ -238,7 +238,7 @@ input:focus-visible {
   background:
     linear-gradient(180deg, rgba(255, 248, 234, 0.04), transparent 44%),
     var(--card-bg);
-  padding: 0.55rem 0.55rem 2.35rem;
+  padding: 0.55rem;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
 }
 
@@ -295,15 +295,23 @@ input:focus-visible {
   outline: none;
 }
 
+.current-statline-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2rem;
+  align-items: center;
+  gap: 0.3rem;
+}
+
 .current-statline {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.25rem 0.25rem 0.15rem;
+  min-width: 0;
+  padding: 0.25rem 0 0.15rem 0.25rem;
   text-align: center;
   font-family: var(--font-display);
-  font-size: clamp(2.45rem, 13vw, 3.35rem);
+  font-size: clamp(2.25rem, 12vw, 3.2rem);
   font-weight: 1000;
   line-height: 0.98;
   font-variant-numeric: tabular-nums;
@@ -315,6 +323,20 @@ input:focus-visible {
 
 .current-statline span:last-child {
   text-align: left;
+}
+
+.permanent-delete-button {
+  display: grid;
+  width: 2rem;
+  min-width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(239, 68, 68, 0.18);
+  color: var(--danger);
+  font-size: 0.78rem;
+  font-weight: 1000;
+  line-height: 1;
 }
 
 .modifier-row {
@@ -357,41 +379,6 @@ input:focus-visible {
   font-size: 0.8rem;
   font-weight: 1000;
   line-height: 1;
-}
-
-.permanent-actions {
-  position: absolute;
-  right: 0.55rem;
-  bottom: 0.55rem;
-  display: flex;
-  gap: 0.4rem;
-  align-items: center;
-  flex-shrink: 0;
-  border-radius: 999px;
-  background: rgba(10, 7, 5, 0.22);
-  padding: 0.25rem;
-}
-
-.permanent-action {
-  display: grid;
-  min-height: 1.65rem;
-  min-width: 1.65rem;
-  place-items: center;
-  flex: 0 0 auto;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 0 0.55rem;
-  color: var(--text-muted);
-  font-size: 0.62rem;
-  font-weight: 1000;
-  white-space: nowrap;
-}
-
-.permanent-action.danger {
-  width: 1.9rem;
-  min-width: 1.9rem;
-  padding: 0;
-  color: var(--danger);
 }
 
 .modifier-readout {

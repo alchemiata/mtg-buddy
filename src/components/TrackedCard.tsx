@@ -29,7 +29,7 @@ function StatStepper({ modifier, onModifierChange, ariaLabel }: StatStepperProps
   );
 }
 
-function TrackedCard({ card, onUpdate, onReset, onDelete }: TrackedCardProps) {
+function TrackedCard({ card, onUpdate, onDelete }: TrackedCardProps) {
   const actualAttack = card.baseAttack + card.attack;
   const actualDefense = card.baseDefense + card.defense;
 
@@ -74,10 +74,20 @@ function TrackedCard({ card, onUpdate, onReset, onDelete }: TrackedCardProps) {
         </div>
       </div>
 
-      <div className="current-statline" aria-label="Current power and toughness">
-        <span>{actualAttack}</span>
-        <span aria-hidden="true">/</span>
-        <span>{actualDefense}</span>
+      <div className="current-statline-wrap">
+        <div className="current-statline" aria-label="Current power and toughness">
+          <span>{actualAttack}</span>
+          <span aria-hidden="true">/</span>
+          <span>{actualDefense}</span>
+        </div>
+        <button
+          type="button"
+          onClick={() => onDelete(card.id)}
+          className="tap-button permanent-delete-button"
+          aria-label="Remove creature"
+        >
+          x
+        </button>
       </div>
 
       <div className="modifier-row">
@@ -91,11 +101,6 @@ function TrackedCard({ card, onUpdate, onReset, onDelete }: TrackedCardProps) {
           ariaLabel="toughness"
           onModifierChange={(defense) => onUpdate(card.id, { defense })}
         />
-      </div>
-
-      <div className="permanent-actions">
-        <button type="button" onClick={() => onReset(card.id)} className="tap-button permanent-action">Reset</button>
-        <button type="button" onClick={() => onDelete(card.id)} className="tap-button permanent-action danger">x</button>
       </div>
     </article>
   );
