@@ -154,24 +154,37 @@ input:focus-visible {
   z-index: 8;
   margin-inline: -0.25rem;
   padding: 0.35rem 0.25rem 0.5rem;
-  background:
-    linear-gradient(180deg, rgba(12, 8, 5, 0.88), rgba(12, 8, 5, 0.82)),
-    var(--land-bg),
-    var(--app-bg);
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
+  isolation: isolate;
+}
+
+.tracker-header::before {
+  content: "";
+  position: absolute;
+  inset: -0.22rem -0.55rem 0.05rem;
+  z-index: -1;
+  border-radius: 0.85rem;
+  background: linear-gradient(180deg, rgba(10, 7, 5, 0.46), rgba(10, 7, 5, 0.28) 68%, rgba(10, 7, 5, 0));
+  backdrop-filter: blur(7px) saturate(1.04);
+  mask-image:
+    linear-gradient(to right, transparent, black 1rem, black calc(100% - 1rem), transparent),
+    linear-gradient(to bottom, black 0 72%, transparent 100%);
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, black 1rem, black calc(100% - 1rem), transparent),
+    linear-gradient(to bottom, black 0 72%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+  pointer-events: none;
 }
 
 .tracker-header::after {
   content: "";
   position: absolute;
-  left: -0.75rem;
-  right: -0.75rem;
-  bottom: -0.45rem;
-  height: 0.95rem;
-  background: linear-gradient(180deg, rgba(8, 6, 4, 0.5), rgba(8, 6, 4, 0));
-  filter: blur(5px);
+  left: -1rem;
+  right: -1rem;
+  bottom: -0.55rem;
+  height: 1.05rem;
+  background: linear-gradient(180deg, rgba(8, 6, 4, 0.22), rgba(8, 6, 4, 0));
+  filter: blur(8px);
   pointer-events: none;
 }
 
@@ -191,8 +204,8 @@ input:focus-visible {
   top: 3.25rem;
   z-index: 5;
   height: 1.35rem;
-  background: linear-gradient(180deg, rgba(10, 7, 5, 0.6), rgba(10, 7, 5, 0));
-  filter: blur(5px);
+  background: linear-gradient(180deg, rgba(10, 7, 5, 0.2), rgba(10, 7, 5, 0));
+  filter: blur(8px);
   pointer-events: none;
 }
 
@@ -213,15 +226,15 @@ input:focus-visible {
 .life-panel::before {
   content: "";
   position: absolute;
-  inset: 4.1rem calc(3.75rem + 0.7rem) 0.45rem;
-  border-radius: 1.5rem;
+  inset: 3.45rem calc(3.75rem + 0.35rem) -0.35rem;
+  border-radius: 999px;
   background:
-    radial-gradient(circle at 50% 50%, rgba(10, 7, 5, 0.28), rgba(10, 7, 5, 0.1) 58%, transparent 76%),
-    rgba(255, 248, 234, 0.06);
-  backdrop-filter: blur(13px) saturate(1.08);
-  filter: blur(1px);
-  mask-image: radial-gradient(ellipse at center, black 0 52%, rgba(0, 0, 0, 0.82) 62%, transparent 82%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 0 52%, rgba(0, 0, 0, 0.82) 62%, transparent 82%);
+    radial-gradient(ellipse at 50% 50%, rgba(10, 7, 5, 0.24), rgba(10, 7, 5, 0.13) 42%, rgba(10, 7, 5, 0.05) 64%, transparent 84%),
+    rgba(255, 248, 234, 0.035);
+  backdrop-filter: blur(16px) saturate(1.08);
+  filter: blur(2.5px);
+  mask-image: radial-gradient(ellipse at center, black 0 38%, rgba(0, 0, 0, 0.72) 58%, rgba(0, 0, 0, 0.28) 76%, transparent 93%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0 38%, rgba(0, 0, 0, 0.72) 58%, rgba(0, 0, 0, 0.28) 76%, transparent 93%);
   pointer-events: none;
 }
 
@@ -629,7 +642,7 @@ input:focus-visible {
   }
 
   .life-panel::before {
-    inset: 5.25rem calc(4.5rem + 0.7rem) 0.85rem;
+    inset: 4.45rem calc(4.5rem + 0.35rem) -0.2rem;
   }
 
   .life-panel {
