@@ -13,6 +13,12 @@ interface StatStepperProps {
   ariaLabel: string;
 }
 
+interface BaseStatStepperProps {
+  value: number;
+  onChange: (value: number) => void;
+  label: string;
+}
+
 const formatModifier = (value: number) => (value >= 0 ? `+${value}` : `${value}`);
 
 function StatStepper({ modifier, onModifierChange, ariaLabel }: StatStepperProps) {
@@ -25,6 +31,16 @@ function StatStepper({ modifier, onModifierChange, ariaLabel }: StatStepperProps
         <button type="button" onClick={() => onModifierChange(modifier + 1)} className="tap-button mini-stat-button" aria-label={`Increase ${ariaLabel}`}>+</button>
         <button type="button" onClick={() => onModifierChange(modifier - 1)} className="tap-button mini-stat-button" aria-label={`Decrease ${ariaLabel}`}>-</button>
       </div>
+    </div>
+  );
+}
+
+function BaseStatStepper({ value, onChange, label }: BaseStatStepperProps) {
+  return (
+    <div className="base-stat-stepper" aria-label={`Base ${label} controls`}>
+      <button type="button" onClick={() => onChange(value - 1)} className="tap-button base-stat-button" aria-label={`Decrease base ${label}`}>-</button>
+      <span className="base-stat-label">Base {label}</span>
+      <button type="button" onClick={() => onChange(value + 1)} className="tap-button base-stat-button" aria-label={`Increase base ${label}`}>+</button>
     </div>
   );
 }
@@ -72,6 +88,19 @@ function TrackedCard({ card, onUpdate, onDelete }: TrackedCardProps) {
             />
           </label>
         </div>
+      </div>
+
+      <div className="base-stepper-row" aria-label="Base stat controls">
+        <BaseStatStepper
+          value={card.baseAttack}
+          label="power"
+          onChange={(baseAttack) => onUpdate(card.id, { baseAttack })}
+        />
+        <BaseStatStepper
+          value={card.baseDefense}
+          label="toughness"
+          onChange={(baseDefense) => onUpdate(card.id, { baseDefense })}
+        />
       </div>
 
       <div className="current-statline-wrap">
